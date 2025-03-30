@@ -1,18 +1,27 @@
-interface Treatment {
-    treatment_id: number
-    userId: number
-    schedule: string
-    isCompleted: boolean
-    createdAt: string
-    updatedAt: string
-    deletedAt: string
+export interface description {
+    description_id: number
+    name: string
 }
 
-
-interface TreatmentDescription {
-    id: number
+export interface prescription {
+    prescription_id: number
     name: string
-    createdAt: string
-    updatedAt: string
-    deletedAt: string
+}
+
+export interface userTreatmentDescription {
+    user_treatment_id: number
+    description_id: number
+}
+
+export interface userTreatmentPrescription {
+    user_treatment_id: number
+    prescription_id: number
+}
+
+export interface TreatmentData {
+    user_id : number,
+    descriptions: userTreatmentDescription["user_treatment_id"][],
+    prescriptions: userTreatmentPrescription["prescription_id"][],
+    cost: number
+    schedule: string
 }

@@ -1,4 +1,4 @@
-import { TreatmentData } from "../database/connect"
+import { TreatmentData } from "../models/treatment"
 
 // Use To Insert into table user_treatments, user_treatment_descriptions, user_treatment_prescriptions at the same time because the last two table depend on the firs one
 export const buildInsertOneTreatmentQueryString = (payload: TreatmentData): string => {
@@ -42,7 +42,5 @@ export const buildInsertOneTreatmentQueryString = (payload: TreatmentData): stri
         values
             ${prescriptionsQuery};
     `
-
-    console.log(query)
     return query
 }
