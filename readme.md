@@ -23,9 +23,11 @@ DB_PORT= 5432
 `NOTE: make sure the port is 3001, because thats the number the frontend will hit`
 
 ### Database Seeding
-To be able to create a User Treatment you need to create all the neccessart data to be consumed by frontend and backend.
+To be able to create a User Treatment you need to create all the necessary data to be consumed by frontend and backend.
 
-You can execute this **sql script**
+You need postgreSQL in your device to do this.
+
+You can execute this **sql script** in your PostgreSQL GUI or psql terminal.
 ```sql
 drop table if exists user_treatment_prescriptions;
 drop table if exists user_treatment_descriptions;
