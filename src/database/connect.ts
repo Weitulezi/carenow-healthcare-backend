@@ -1,16 +1,16 @@
 import { Pool} from 'pg'
 import dotenv from 'dotenv'
+import { buildInsertOneTreatmentQueryString } from '../libs/query';
 
 dotenv.config();
 
-interface TreatmentData {
+export interface TreatmentData {
     user_id : number,
     descriptions: number[],
     prescriptions: number[],
     cost: number
     schedule: string
 }
-
 
 export const pool = new Pool({
 	user: process.env.DB_USER,
@@ -21,20 +21,23 @@ export const pool = new Pool({
 });
 
 export const insertOne = async (pool: Pool,  payload: TreatmentData) => {
-	const client = await pool.connect(); // Get a client from the pool
+	const client = await pool.connect();
 	
 	try {
-		const queryString = `
-			INSERT INTO user_treatments
-				(user_id, cost, schedule, created_at, updated_at)
-			values
-				($1, $2, $3, NOW(), NOW()) RETURNING user_treatment_id;
-		`
-		  const result = await client.query(queryString, [payload.user_id, payload.cost, payload.schedule]); // Execute query
-		  return result.rows; // Return rows
+		const queryString = buildInsertOneTreatmentQueryString(payload)
+		await client.query(
+			queryString, 
+			[
+				payload.user_id, 
+				payload.cost, 
+				payload.schedule, 
+				...payload.descriptions, 
+				...payload.prescriptions
+			]
+		)
 	} catch (err) {
-	  throw err;
+		throw err;
 	} finally {
-	  client.release(); // Release the client back to the pool
+		client.release(); // Release the client back to the pool
 	}
 }
