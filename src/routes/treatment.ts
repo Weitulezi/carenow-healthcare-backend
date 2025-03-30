@@ -1,5 +1,5 @@
 import express, {  Router } from "express";
-import { createTreatmentController } from "../controllers/treatmentControllers";
+import { createTreatmentController } from "../controllers/treatment";
 
 const router: Router = express.Router()
 

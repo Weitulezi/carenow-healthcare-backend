@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import express, { Express, Request, Response } from "express";
 import bodyParser from "body-parser";
-import treatmentRoutes from "./routes/treatmentRoutes";
+import treatmentRoutes from "./routes/treatment";
 
 dotenv.config();
 
