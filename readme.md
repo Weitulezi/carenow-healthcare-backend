@@ -1,4 +1,4 @@
-## Setup
+## Installing package
 
 After cloning this repository. You can installing all the required package by execute this in terminal:
 
@@ -150,4 +150,8 @@ insert into
 		(2, 2000, NOW(), NOW(), NOW());
 ```
 
-
+### Running the server
+Now you can run the server
+```bash
+npm run dev
+```
