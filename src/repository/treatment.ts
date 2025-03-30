@@ -1,14 +1,9 @@
-interface TreatmentData {
-    user_id : number,
-    descriptions: number[],
-    prescriptions: number[],
-    schedule: string
-}
+import { pool, insertOne } from "../database/connect"
 
 export class TreatmentRepository {
-    async createTreatment(payload: TreatmentData) {
+    async createTreatment(payload: Parameters<typeof insertOne>[1]) {
         try {
-            console.log(payload)
+            await insertOne(pool, payload)
         } catch(err) {
             throw err
         }
