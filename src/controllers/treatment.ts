@@ -11,7 +11,6 @@ interface treatmentReqBody {
 
 export const createTreatmentController = async (req: Request, res: Response) => {
     const data: treatmentReqBody = req.body
-    console.log(data)
     const service = new TreatmentService()
 
     try {
