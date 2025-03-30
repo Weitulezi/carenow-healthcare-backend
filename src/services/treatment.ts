@@ -1,4 +1,4 @@
-import { DescriptionRepository, TreatmentRepository } from "../repository/treatment";
+import { DescriptionRepository, PrescriptionRepository, TreatmentRepository } from "../repository/treatment";
 
 export class TreatmentService {
     private treatmentRepository: TreatmentRepository;
@@ -26,6 +26,22 @@ export class DescriptionService {
     async getAllDescription() {   
         try {
             return await this.descriptionRepository.getAllDescription()
+        } catch(err) {
+            throw err
+        }
+    }
+}
+
+export class PrescriptionService {
+    private prescriptionRepository: PrescriptionRepository;
+
+    constructor() {
+        this.prescriptionRepository = new PrescriptionRepository()  
+    }
+
+    async getAllPrescription() {   
+        try {
+            return await this.prescriptionRepository.getAllPrescription()
         } catch(err) {
             throw err
         }

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { DescriptionService, TreatmentService } from "../services/treatment";
+import { DescriptionService, PrescriptionService, TreatmentService } from "../services/treatment";
 
 interface treatmentReqBody {
     user_id : number,
@@ -29,5 +29,16 @@ export const getAllDescriptionController = async (req: Request, res: Response) =
         res.status(201).json({descriptions})
     } catch(err) {
         res.status(400).json({"message": "failed to fetch descriptions"})
+    }
+}
+
+export const getAllPrescriptionController = async (req: Request, res: Response) => {
+    const service = new PrescriptionService()
+
+    try {
+        const prescriptions = await service.getAllPrescription()
+        res.status(201).json({prescriptions})
+    } catch(err) {
+        res.status(400).json({"message": "failed to fetch prescriptions"})
     }
 }

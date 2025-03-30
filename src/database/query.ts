@@ -33,6 +33,24 @@ export const getAllDescription = async (pool: Pool) => {
 		`
 		const result = await client.query(queryString)
 		return result.rows
+
+	} catch (err) {
+		console.log(err)
+		throw err;
+	} finally {
+		client.release(); // Release the client back to the pool
+	}
+}
+
+export const getAllPrescription = async (pool: Pool) => {
+	const client = await pool.connect();
+	
+	try {
+		const queryString = `
+			SELECT prescription_id, name from prescriptions;
+		`
+		const result = await client.query(queryString)
+		return result.rows
 		
 	} catch (err) {
 		console.log(err)
