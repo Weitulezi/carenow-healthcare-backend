@@ -1,13 +1,3 @@
-export interface description {
-    description_id: number
-    name: string
-}
-
-export interface prescription {
-    prescription_id: number
-    name: string
-}
-
 export interface userTreatmentDescription {
     user_treatment_id: number
     description_id: number

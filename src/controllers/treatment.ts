@@ -11,6 +11,7 @@ interface treatmentReqBody {
 
 export const createTreatmentController = async (req: Request, res: Response) => {
     const data: treatmentReqBody = req.body
+    console.log(data)
     const service = new TreatmentService()
 
     try {
@@ -26,7 +27,7 @@ export const getAllDescriptionController = async (req: Request, res: Response) =
 
     try {
         const descriptions = await service.getAllDescription()
-        res.status(201).json({descriptions})
+        res.status(201).json(descriptions)
     } catch(err) {
         res.status(400).json({"message": "failed to fetch descriptions"})
     }
@@ -37,7 +38,7 @@ export const getAllPrescriptionController = async (req: Request, res: Response) 
 
     try {
         const prescriptions = await service.getAllPrescription()
-        res.status(201).json({prescriptions})
+        res.status(201).json(prescriptions)
     } catch(err) {
         res.status(400).json({"message": "failed to fetch prescriptions"})
     }

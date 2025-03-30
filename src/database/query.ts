@@ -18,6 +18,7 @@ export const insertOneTreatment = async (pool: Pool,  payload: TreatmentData) =>
 			]
 		)
 	} catch (err) {
+		console.log(err)
 		throw err;
 	} finally {
 		client.release(); // Release the client back to the pool
@@ -48,6 +49,25 @@ export const getAllPrescription = async (pool: Pool) => {
 	try {
 		const queryString = `
 			SELECT prescription_id, name from prescriptions;
+		`
+		const result = await client.query(queryString)
+		return result.rows
+		
+	} catch (err) {
+		console.log(err)
+		throw err;
+	} finally {
+		client.release(); // Release the client back to the pool
+	}
+}
+
+
+export const getAllUser = async (pool: Pool) => {
+	const client = await pool.connect();
+	
+	try {
+		const queryString = `
+			SELECT user_id, name from users;
 		`
 		const result = await client.query(queryString)
 		return result.rows

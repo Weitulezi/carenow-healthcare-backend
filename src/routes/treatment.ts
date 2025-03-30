@@ -3,8 +3,8 @@ import { createTreatmentController, getAllDescriptionController, getAllPrescript
 
 const router: Router = express.Router()
 
-router.post("/treatments", createTreatmentController)
-router.get("/descriptions", getAllDescriptionController)
-router.get("/prescriptions", getAllPrescriptionController)
+router.post("/api/treatments", createTreatmentController)
+router.get("/api/descriptions", getAllDescriptionController)
+router.get("/api/prescriptions", getAllPrescriptionController)
 
 export default router
