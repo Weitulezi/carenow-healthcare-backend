@@ -18,7 +18,6 @@ export const insertOneTreatment = async (pool: Pool,  payload: TreatmentData) =>
 			]
 		)
 	} catch (err) {
-		console.log(err)
 		throw err;
 	} finally {
 		client.release(); // Release the client back to the pool
@@ -36,7 +35,6 @@ export const getAllDescription = async (pool: Pool) => {
 		return result.rows
 
 	} catch (err) {
-		console.log(err)
 		throw err;
 	} finally {
 		client.release(); // Release the client back to the pool
@@ -54,7 +52,6 @@ export const getAllPrescription = async (pool: Pool) => {
 		return result.rows
 		
 	} catch (err) {
-		console.log(err)
 		throw err;
 	} finally {
 		client.release(); // Release the client back to the pool
