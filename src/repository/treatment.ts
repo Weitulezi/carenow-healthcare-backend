@@ -1,10 +1,18 @@
 import { pool } from "../database/client"
-import { getAllDescription, getAllPrescription, insertOneTreatment } from "../database/query"
+import { findAllTreatment, getAllDescription, getAllPrescription, insertOneTreatment } from "../database/query"
 
 export class TreatmentRepository {
     async createTreatment(payload: Parameters<typeof insertOneTreatment>[1]) {
         try {
             await insertOneTreatment(pool, payload)
+        } catch(err) {
+            throw err
+        }
+    }
+
+    async listTreatment(payload: string) {
+        try {
+            return await findAllTreatment(pool, payload)
         } catch(err) {
             throw err
         }
